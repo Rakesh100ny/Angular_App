@@ -1,0 +1,71 @@
+<div class="md-padding" ng-cloak style="min-height:270px">
+  <div layout="row" layout-wrap>
+
+    <div layout="row" layout-wrap>
+
+     <div flex="100" flex-gt-sm="50" layout="column">
+       <div>
+         <!--
+           In IE, we cannot apply flex directly to <fieldset>
+           @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
+         -->
+         <fieldset class="standard" >
+           <legend>Using &lt;md-checkbox&gt; with &lt;ng-checked&gt; </legend>
+           <div layout="row" layout-wrap flex>
+             <div flex="50" ng-repeat="item in items">
+               <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                 {{ item.specs.manufacturer}} <span ng-if="exists(item, selected)">selected</span>
+               </md-checkbox>
+             </div>
+           </div>
+         </fieldset>
+       </div>
+     </div>
+
+     <md-content class="content " layout="row"  layout-padding layout-xs="column" layout-wrap layout-align-gt-md="start center" layout-align-md="space-around center" layout-align-sm="space-around center" >
+      <md-card class="md-card-start animated fadeInLeft" ng-model="selectedItems"  ng-repeat="item in jsonRecord" md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch="">
+        <md-card-header>
+          <md-card-avatar>
+            <img class="md-user-avatar" src="{{ item.image.small }}">
+          </md-card-avatar>
+           <md-card-header-text>
+            <span class="md-title"><h3>{{ item.name+" "}}</h3></span>
+           </md-card-header-text>
+        </md-card-header>
+   <md-divider></md-divider>
+
+        <img  ng-src="{{ img }}"  class="md-card-image img" alt="mobile image">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{item.name}}</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-divider></md-divider>
+        <md-card-content class="center">
+          <p><strong>Manufacturer : </strong>{{item.specs.manufacturer}}</p>
+          <p><strong>Storage      : </strong>{{item.specs.storage}} &nbsp;GB</p>
+          <p><strong>OS           : </strong>{{item.specs.os}}</p>
+         <p><strong>Camera        : </strong>{{item.specs.camera}} &nbsp; Mpx</p>
+
+        </md-card-content>
+   <md-divider></md-divider>
+           <md-card-actions layout="row" layout-align="space-between center">
+         </md-button>
+          <md-button class='md-raised md-accent' ng-click='showDialog($event,item)'>Buy Now!</md-button>
+          <p><b>$ {{item.price}}</b></p>
+        </md-card-actions>
+
+        <md-card-title-media>
+          <div class="md-media-lg card-media">
+
+          </div>
+        </md-card-title-media>
+      </md-card>
+        </md-content>
+
+  <div flex="100">
+      <h2 class="md-title">Selected Items</h2>
+      <code style="display: block; padding: 8px;">{{selected | json}}</code>
+    </div>
+  </div>
+</div>

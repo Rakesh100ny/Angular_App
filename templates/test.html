@@ -1,0 +1,9 @@
+
+ <table>
+   <th>Customer list:</th>
+   <tr ng-repeat="order in orders | unique: 'customer.id'" >
+      <td> {{ order.customer.name }} , {{ order.customer.id }} </td>
+   </tr>
+ </table>
+
+ 

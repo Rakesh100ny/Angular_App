@@ -1,0 +1,11 @@
+<div>
+  <table>
+    <tr>
+       <th>Company_Manufacturer</th>
+     </tr>
+      <tr ng-value="x" ng-model="x" ng-repeat="x in jsonRecord | unique:'specs.manufacturer'">
+         <td align="center">{{ x.specs.manufacturer+" " }}</td>
+
+    </tr>
+  </table>
+</div>

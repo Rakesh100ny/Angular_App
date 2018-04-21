@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.sidenav
+{
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+.sidenav a
+{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+.sidenav a:hover, .offcanvas a:focus
+{
+    color: #f1f1f1;
+}
+.closebtn
+{
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px !important;
+    margin-left: 60px;
+}
+.mgn-left
+{
+ margin-left:5px;
+}
+
+#mySidenav
+{
+ width: 0px;
+}
+#main
+{
+    transition: margin-left .5s;
+}
+
+
+</style>
+</head>
+<body>
+
+<div id="main">
+ <button onclick="toggle()">toggle</button>
+</div>
+
+<div id="mySidenav" class="sidenav">
+
+
+    <a href="#> "><span class="mgn-left">Hello Rakesh!</span></i></a>
+    <a href="#> "><span class="mgn-left">Hey   Ranu!</span></i></a>
+    <a href="#> "><span class="mgn-left">Hiii  Rakesh!</span></i></a>
+    <a href="#> "><span class="mgn-left">H!!!  Ranu!</span></i></a>
+    <a href="#> "><span class="mgn-left">Hi!i  Rakesh!</span></i></a>
+  </div>
+
+<script>
+
+function toggle()
+{
+console.log(document.getElementById("mySidenav").style.width);
+
+if(document.getElementById("mySidenav").style.width=="0px")
+ {
+   openNav();
+
+
+ } else {
+ 	  closeNav();
+ }
+}
+  function openNav() {
+      document.getElementById("mySidenav").style.width = "200px";
+      document.getElementById("main").style.marginLeft = "200px";
+      document.body.style.backgroundColor = "white";
+
+  }
+
+  function closeNav() {
+     document.getElementById("mySidenav").style.width = "0px";
+     document.getElementById("main").style.marginLeft = "0px";
+     document.body.style.backgroundColor = "white";
+  }
+
+
+</script>
+
+
+</body>
+</html>

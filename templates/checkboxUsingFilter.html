@@ -1,0 +1,37 @@
+<div>
+        <h2>Runlevel</h2>
+        <label>PAV</label>
+        <input  type="checkbox" ng-model="Filter.runlevel.PAV" ng-true-value="1"  ng-false-value="0" />&nbsp;
+        <label>UAT</label>
+        <input  type="checkbox" ng-model="Filter.runlevel.UAT" ng-true-value="1"  ng-false-value="0" />&nbsp;
+        <label>ST</label>
+        <input  type="checkbox" ng-model="Filter.runlevel.ST" ng-true-value="1"  ng-false-value="0"/>
+        <hr />
+        <h2>Runmode</h2>
+        <label>Author</label>
+        <input  type="checkbox" ng-model="Filter.mode.author" ng-true-value="1"  ng-false-value="0" />&nbsp;
+        <label>Publish</label>
+        <input  type="checkbox" ng-model="Filter.mode.publish" ng-true-value="1"  ng-false-value="0" />
+        <hr />
+        <h2>Environment</h2>
+        <label>Intranet</label>
+        <input  type="checkbox" ng-model="Filter.env.intranet" ng-true-value="1"  ng-false-value="0" />&nbsp;
+        <label>Internet</label>
+        <input  type="checkbox" ng-model="Filter.env.internet" ng-true-value="1"  ng-false-value="0" />
+        <hr />
+        <h2>Server list</h2>
+        <table width="100%" cellpadding="5">
+            <tr>
+                <th ng-click="OrderFilter='name'">Name</th>
+                <th ng-click="OrderFilter='runlevel'">Runlevel</th>
+                <th ng-click="OrderFilter='mode'">Runmode</th>
+                <th ng-click="OrderFilter='env'">Environment</th>
+            </tr>
+            <tr ng-repeat="server in servers | searchFilter:Filter.runlevel:Filter.mode:Filter.env  | orderBy:OrderFilter">
+                <td>{{server.name}}</td>
+                <td>{{server.runlevel}}</td>
+                <td>{{server.mode}}</td>
+                <td>{{server.env}}</td>
+            </tr>
+        </table>
+</div>
