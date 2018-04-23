@@ -4,7 +4,9 @@
 
 .dashboard {
   padding-top: 4%;
+  transition: margin-left .8s;
 }
+
 
 .content {
   padding-left: 5%;
@@ -21,8 +23,6 @@
   background-color: lightblue;
   align-self: center;
 }
-
-
 
 .pad {
   height: 100%;
@@ -59,12 +59,14 @@
 .md-sidenav-left {
   margin-top: 64px;
   position: fixed;
+  transition: 0.7s;
 }
 
 @media(max-width:959px) and (orientation: portrait) {
   .md-sidenav-left {
     margin-top: 56px;
     position: fixed;
+    transition: 0.7s;
   }
 }
 
@@ -76,6 +78,7 @@
   .md-sidenav-left {
     margin-top: 48px;
     position: fixed;
+    transition: 0.7s;
   }
 }
 
@@ -109,6 +112,7 @@
 @media(max-width:496px) and (orientation: portrait) {
   .md-sidenav-left {
     width: auto;
+    transition: 0.7s;
   }
 }
 

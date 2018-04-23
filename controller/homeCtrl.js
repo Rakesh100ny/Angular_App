@@ -60,7 +60,8 @@ app.controller('homeCtrl', function($scope, $mdSidenav, $state, readJson, $filte
 
   $scope.toggle = function(type, value) {
     switch (type) {
-      case 'manufacturer':
+      case 'manufacturer': 
+
         var indexManufacturer = manufacturerItem.indexOf(value);
         if (indexManufacturer > -1) {
           manufacturerItem.splice(indexManufacturer, 1);
@@ -99,10 +100,6 @@ app.controller('homeCtrl', function($scope, $mdSidenav, $state, readJson, $filte
   $scope.arrayOs = osItem;
   $scope.arrayCamera = cameraItem;
 
-   console.log("arrayManufacturer",manufacturerItem);
-   console.log("arrayStorage",storageItem);
-   console.log("arrayOs",osItem);
-   console.log("arrayCamera",cameraItem);
 });
 
 
@@ -115,9 +112,9 @@ app.filter('myFilter', function() {
     {
     if (arrayManufacturer.length > 0)
     {
-     angular.forEach(items, function(value)
+     angular.forEach(items, function(value,key)
      {
-      angular.forEach(arrayManufacturer, function(data)
+      angular.forEach(arrayManufacturer, function(data,key)
       {
         if (value.specs.manufacturer == data)
         {
@@ -125,113 +122,66 @@ app.filter('myFilter', function() {
         }
       });
       });
-      temp = displayData;
-      displayData = [];
+      if(displayData.length>0)
+      {
+        temp = displayData;
+        console.log("tempManufacturer",temp);
+        displayData = [];
+      }
+      else
+      {
+        temp=items;
+      }
      }
       if (arrayStorage.length > 0)
       {
-       if(temp.length>0)
-       {
-         console.log("r1");
-         angular.forEach(temp, function(value)
+        angular.forEach(temp, function(value)
+        {
+         angular.forEach(arrayStorage, function(data)
          {
-          console.log("r2");
-          angular.forEach(arrayStorage, function(data)
+          if (value.specs.storage == data)
           {
-            console.log("r3");
-            console.log("VALUE1",value.specs.storage);
-           if (value.specs.storage == data)
-           {
-            console.log("r4");
-            console.log("VALUE2",value.specs.storage);
-            displayData.push(value);
-           }
-          });
+           displayData.push(value);
+          }
          });
-       }
-       else
-       {
-         console.log("r1");
-         angular.forEach(items, function(value)
-         {
-          console.log("r2");
-          angular.forEach(arrayStorage, function(data)
-          {
-            console.log("r3");
-            console.log("VALUE1",value.specs.storage);
-           if (value.specs.storage == data)
-           {
-            console.log("r4");
-            console.log("VALUE2",value.specs.storage);
-            displayData.push(value);
-           }
-          });
-         });
-       }
+        });
+
        temp = displayData;
-       console.log("tempArray",temp);
+       console.log("tempStorage",temp);
        displayData = [];
       }
 
       if (arrayOs.length > 0)
       {
-        if (temp.length>0)
+        angular.forEach(temp, function(value)
         {
-          angular.forEach(temp, function(value)
-          {
-           angular.forEach(arrayOs, function(data)
+         angular.forEach(arrayOs, function(data)
+         {
+           if (value.specs.os == data)
            {
-             if (value.specs.os == data)
-             {
-              displayData.push(value);
-             }
-           });
-          });
-        } else
-        {
-          angular.forEach(items, function(value)
-          {
-           angular.forEach(arrayOs, function(data)
-           {
-             if (value.specs.os == data)
-             {
-              displayData.push(value);
-             }
-           });
-          });
-        }
+            displayData.push(value);
+           }
+         });
+        });
        temp = displayData;
+       console.log("tempOs",temp);
        displayData = [];
        }
 
        if (arrayCamera.length > 0)
        {
-        if (temp.length>0) {
-          angular.forEach(temp, function(value)
+         angular.forEach(temp, function(value)
+         {
+          angular.forEach(arrayCamera, function(data)
           {
-           angular.forEach(arrayCamera, function(data)
+           if (value.specs.camera == data)
            {
-            if (value.specs.camera == data)
-            {
-             displayData.push(value);
-            }
-           });
+            displayData.push(value);
+           }
           });
-        } else
-        {
-          angular.forEach(items, function(value)
-          {
-           angular.forEach(arrayCamera, function(data)
-           {
-            if (value.specs.camera == data)
-            {
-             displayData.push(value);
-            }
-           });
-          });
-        }
-
+         });
         temp = displayData;
+        console.log("tempCamera",temp);
         displayData = [];
        }
       }
