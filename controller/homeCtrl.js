@@ -58,43 +58,74 @@ app.controller('homeCtrl', function($scope, $mdSidenav, $state, readJson, $filte
   $state.go('home.dashboard');
 
 
+  // $scope.toggle = function(type, value) {
+  //   switch (type) {
+  //     case 'manufacturer':
+  //
+  //       var indexManufacturer = manufacturerItem.indexOf(value);
+  //       if (indexManufacturer > -1) {
+  //         manufacturerItem.splice(indexManufacturer, 1);
+  //       } else {
+  //         manufacturerItem.push(value);
+  //       }
+  //       break;
+  //     case 'storage':
+  //       var indexStorage = storageItem.indexOf(value);
+  //       if (indexStorage > -1) {
+  //         storageItem.splice(indexStorage, 1);
+  //       } else {
+  //         storageItem.push(value);
+  //       }
+  //       break;
+  //     case 'os':
+  //       var indexOs = osItem.indexOf(value);
+  //       if (indexOs > -1) {
+  //         osItem.splice(indexOs, 1);
+  //       } else {
+  //         osItem.push(value);
+  //       }
+  //       break;
+  //     case 'camera':
+  //       var indexCamera = cameraItem.indexOf(value);
+  //       if (indexCamera > -1) {
+  //         cameraItem.splice(indexCamera, 1);
+  //       } else {
+  //         cameraItem.push(value);
+  //       }
+  //       break;
+  //   }
+  // };
+
   $scope.toggle = function(type, value) {
     switch (type) {
-      case 'manufacturer': 
+      case 'manufacturer':
+        unqiueFunction(manufacturerItem, value);
 
-        var indexManufacturer = manufacturerItem.indexOf(value);
-        if (indexManufacturer > -1) {
-          manufacturerItem.splice(indexManufacturer, 1);
-        } else {
-          manufacturerItem.push(value);
-        }
         break;
       case 'storage':
-        var indexStorage = storageItem.indexOf(value);
-        if (indexStorage > -1) {
-          storageItem.splice(indexStorage, 1);
-        } else {
-          storageItem.push(value);
-        }
+        unqiueFunction(storageItem, value);
         break;
       case 'os':
-        var indexOs = osItem.indexOf(value);
-        if (indexOs > -1) {
-          osItem.splice(indexOs, 1);
-        } else {
-          osItem.push(value);
-        }
+        unqiueFunction(osItem, value);
         break;
       case 'camera':
-        var indexCamera = cameraItem.indexOf(value);
-        if (indexCamera > -1) {
-          cameraItem.splice(indexCamera, 1);
-        } else {
-          cameraItem.push(value);
-        }
+        unqiueFunction(cameraItem, value);
         break;
     }
   };
+
+  unqiueFunction = function(uniqueArray, value) {
+
+    var index = uniqueArray.indexOf(value);
+    if (index > -1) {
+      uniqueArray.splice(index, 1);
+    } else {
+      uniqueArray.push(value);
+    }
+
+  };
+
+
   $scope.arrayManufacturer = manufacturerItem;
   $scope.arrayStorage = storageItem;
   $scope.arrayOs = osItem;
@@ -104,91 +135,157 @@ app.controller('homeCtrl', function($scope, $mdSidenav, $state, readJson, $filte
 
 
 app.filter('myFilter', function() {
-  return function(items, arrayManufacturer, arrayStorage, arrayOs, arrayCamera)
-   {
+  return function(items, arrayManufacturer, arrayStorage, arrayOs, arrayCamera) {
     var displayData = [];
     var temp = [];
-    if (arrayManufacturer.length > 0 || arrayStorage.length>0 || arrayOs.length>0 || arrayCamera.length>0)
-    {
-    if (arrayManufacturer.length > 0)
-    {
-     angular.forEach(items, function(value,key)
-     {
-      angular.forEach(arrayManufacturer, function(data,key)
-      {
-        if (value.specs.manufacturer == data)
-        {
-         displayData.push(value);
+
+    if (arrayManufacturer.length > 0 || arrayStorage.length > 0 || arrayOs.length > 0 || arrayCamera.length > 0) {
+      if (arrayManufacturer.length > 0) {
+        iterateArray(items, arrayManufacturer, displayData);
+        if (displayData.length > 0) {
+          temp = displayData;
+          console.log("tempManufacturer", temp);
+          displayData = [];
+        } else {
+          temp = items;
         }
-      });
-      });
-      if(displayData.length>0)
-      {
+      }
+      if (arrayStorage.length > 0) {
+        iterateArray(temp, arrayStorage, displayData);
         temp = displayData;
-        console.log("tempManufacturer",temp);
+        console.log("tempStorage", temp);
         displayData = [];
       }
-      else
-      {
-        temp=items;
-      }
-     }
-      if (arrayStorage.length > 0)
-      {
-        angular.forEach(temp, function(value)
-        {
-         angular.forEach(arrayStorage, function(data)
-         {
-          if (value.specs.storage == data)
-          {
-           displayData.push(value);
-          }
-         });
-        });
 
-       temp = displayData;
-       console.log("tempStorage",temp);
-       displayData = [];
-      }
-
-      if (arrayOs.length > 0)
-      {
-        angular.forEach(temp, function(value)
-        {
-         angular.forEach(arrayOs, function(data)
-         {
-           if (value.specs.os == data)
-           {
-            displayData.push(value);
-           }
-         });
-        });
-       temp = displayData;
-       console.log("tempOs",temp);
-       displayData = [];
-       }
-
-       if (arrayCamera.length > 0)
-       {
-         angular.forEach(temp, function(value)
-         {
-          angular.forEach(arrayCamera, function(data)
-          {
-           if (value.specs.camera == data)
-           {
-            displayData.push(value);
-           }
-          });
-         });
+      if (arrayOs.length > 0) {
+        iterateArray(temp, arrayOs, displayData);
         temp = displayData;
-        console.log("tempCamera",temp);
+        console.log("tempOs", temp);
         displayData = [];
-       }
       }
-      else
-      {
-        temp = items;
+
+      if (arrayCamera.length > 0) {
+        iterateArray(temp, arrayCamera, displayData);
+        temp = displayData;
+        console.log("tempCamera", temp);
+        displayData = [];
       }
+    } else {
+      temp = items;
+    }
     return temp;
   };
 });
+
+iterateArray = function(items, array, displayData) {
+  angular.forEach(items, function(value) {
+    angular.forEach(array, function(data) {
+      if (value.specs.manufacturer == data) {
+        displayData.push(value);
+      } else if (value.specs.storage == data) {
+        displayData.push(value);
+      } else if (value.specs.os == data) {
+        displayData.push(value);
+      } else if (value.specs.camera == data) {
+        displayData.push(value);
+      }
+    });
+  });
+};
+
+
+// app.filter('myFilter', function() {
+//   return function(items, arrayManufacturer, arrayStorage, arrayOs, arrayCamera)
+//    {
+//     var displayData = [];
+//     var temp = [];
+//
+//     if(arrayManufacturer.length > 0 || arrayStorage.length>0 || arrayOs.length>0 || arrayCamera.length>0)
+//     {
+//     if (arrayManufacturer.length > 0)
+//     {
+//       angular.forEach(items, function(value)
+//       {
+//        angular.forEach(arrayManufacturer, function(data)
+//        {
+//         if (value.specs.camera == data)
+//         {
+//          displayData.push(value);
+//         }
+//        });
+//       });
+//       if(displayData.length>0)
+//       {
+//         temp = displayData;
+//         console.log("tempManufacturer",temp);
+//         displayData = [];
+//       }
+//       else
+//       {
+//         temp=items;
+//       }
+//      }
+//       if (arrayStorage.length > 0)
+//       {
+//
+//         angular.forEach(temp, function(value)
+//         {
+//          angular.forEach(arrayStorage, function(data)
+//          {
+//           if (value.specs.storage == data)
+//           {
+//            displayData.push(value);
+//           }
+//          });
+//         });
+//
+//        temp = displayData;
+//        console.log("tempStorage",temp);
+//        displayData = [];
+//       }
+//
+//       if (arrayOs.length > 0)
+//       {
+//
+//         angular.forEach(temp, function(value)
+//         {
+//          angular.forEach(arrayOs, function(data)
+//          {
+//            if (value.specs.os == data)
+//            {
+//             displayData.push(value);
+//            }
+//          });
+//         });
+//        temp = displayData;
+//        console.log("tempOs",temp);
+//        displayData = [];
+//        }
+//
+//        if (arrayCamera.length > 0)
+//        {
+//
+//          angular.forEach(temp, function(value)
+//          {
+//           angular.forEach(arrayCamera, function(data)
+//           {
+//            if (value.specs.camera == data)
+//            {
+//             displayData.push(value);
+//            }
+//           });
+//          });
+//         temp = displayData;
+//         console.log("tempCamera",temp);
+//         displayData = [];
+//        }
+//       }
+//       else
+//       {
+//         temp = items;
+//       }
+//     return temp;
+//
+//
+//   };
+// });
