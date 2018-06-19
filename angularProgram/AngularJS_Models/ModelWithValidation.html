@@ -1,0 +1,7 @@
+    <form name="myForm">
+      Email :
+      <input type="email" name="myAddress" ng-model="text">
+      <span ng-show="myForm.myAddress.$error.email">Not a Valid E-Mail Address
+      </span>
+    </form>
+    <p>Enter your e-mail address in the input field. AngularJS will display an errormessage if the address is not an e-mail.</p>

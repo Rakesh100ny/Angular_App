@@ -1,0 +1,26 @@
+<md-sidenav class="md-sidenav-left"  md-component-id="left" md-disable-backdrop md-whiteframe="4" ng-cloak>
+  <md-content layout-margin>
+    <md-subheader class="md-no-sticky"><strong class="color">By Player_Role</strong></md-subheader>
+    <md-list-item  ng-repeat="item in playerDetails | unique : 'player_role' | orderBy : 'player_role'">
+      <md-checkbox class="md-secondary md-hue-1" ng-model="player_role" ng-click="selected(player_role,item.player_role)" aria-label="role"> </md-checkbox>
+      <p>{{ item.player_role }}</p>
+    </md-list-item>
+    <md-subheader class="md-no-sticky"><strong class="color">By Player_Batting</strong></md-subheader>
+    <md-list-item  ng-repeat="item in playerDetails | unique:'player_batting_style' | orderBy : 'player_batting_style'">
+      <md-checkbox class="md-secondary md-hue-1" ng-model="player_batting_style" ng-click="selected(player_batting_style,item.player_batting_style)" aria-label="player_batting_style"> </md-checkbox>
+      <p>{{ item.player_batting_style }}</p>
+    </md-list-item>
+    <md-subheader class="md-no-sticky"><strong class="color">By Player_Bowling</strong></md-subheader>
+    <md-list-item  ng-repeat="item in playerDetails | unique:'player_bowling_style'|  orderBy : 'player_bowling_style'">
+      <md-checkbox class="md-secondary md-hue-1" ng-model="player_bowling_style" ng-click="selected(player_bowling_style,item.player_bowling_style)" aria-label="player_nationality">
+      </md-checkbox>
+      <p>{{ item.player_bowling_style }}</p>
+    </md-list-item>
+    <md-subheader class="md-no-sticky"><strong class="color">By Player_Nationality</strong>  </md-subheader>
+    <md-list-item  ng-repeat="item in playerDetails| unique:'player_nationality' | orderBy : 'player_nationality'">
+      <p>{{ item.player_nationality }}</p>
+      <md-checkbox  class="md-secondary md-hue-1" ng-model="player_nationality"  ng-click="selected(player_nationality,item.player_nationality)" aria-label="player_nationality">
+      </md-checkbox>
+    </md-list-item>
+  </md-content>
+</md-sidenav>

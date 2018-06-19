@@ -1,0 +1,17 @@
+{
+  "name": "practice_Angularjs",
+  "homepage": "https://github.com/Ranu100ny/Ranu",
+  "authors": [
+    "Ranu100ny <baberwalrakesh@yahoo.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

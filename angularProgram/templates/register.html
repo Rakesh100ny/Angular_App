@@ -1,0 +1,39 @@
+   <fieldset style="width:200px;">
+    <p>{{ result }}</p>
+    <legend><h2>Sign Up Page...!</h2></legend>
+    <form name="myForm" novalidate>
+    <p> <em>First Name : </em><br>
+    <input type="text" name="firstName" ng-model="firstName" required  ng-pattern="/(a-z{10})/"><br>
+    <span style="color:red" ng-show="myForm.firstName.$dirty && myForm.firstName.$invalid && myForm.firstName.$error" >
+      <span ng-show="myForm.firstName.$error.required">First Name is required.</span>
+      <span ng-show="myForm.firstName.$error.pattern">Number is Not acceptable.</span>
+    </span>
+    </p>
+    <p> <em>Last Name : </em><br>
+    <input type="text" name="lastName" ng-model="lastName" required><br>
+    <span style="color:red" ng-show="myForm.lastName.$dirty && myForm.lastName.$invalid">
+      <span ng-show="myForm.lastName.$error.required">Last Name is required.</span>
+    </span>
+    </p>
+     <p><em>Email : </em><br>
+       <input type="email" name="email" ng-model="email" required>
+       <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+        <span ng-show="myForm.email.$error.required">Email is required.</span>
+        <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+       </span>
+     </p>
+
+     <p><em>Password : </em><br>
+       <input type="text" name="password" ng-model="password" required>
+       <span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+        <span ng-show="myForm.password.$error.required">Password is required.</span>
+       </span>
+     </p>
+     <input type="submit" value="Submit" ng-click="register(email,password)"  ng-disabled="myForm.firstName.$dirty && myForm.firstName.$invalid ||
+                                                        myForm.lastName.$dirty && myForm.lastName.$invalid ||
+                                                        myForm.email.$dirty && myForm.email.$invalid ||
+                                                        myForm.password.$dirty && myForm.password.$invalid"
+                                                        style="float:left;">
+    </form>
+    <a ui-sref="login" target="_self"><button style="float:right;" type="submit">Login</button> </a>
+  </fieldset>

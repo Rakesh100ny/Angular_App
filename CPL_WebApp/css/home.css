@@ -1,0 +1,160 @@
+
+#toolbar {
+  position: fixed;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.35, 0, 0.25, 1);
+  transition-property: background-color, fill, color;
+
+}
+
+.title-img
+{
+ background-position: center;
+ backface-visibility: hidden;
+ background-size: cover;
+ 
+}
+
+.dashboard {
+  padding-top: 4%;
+}
+
+.playerInfo {
+  padding-top: 4%;
+  transition: margin-left .8s;
+}
+
+
+.content {
+  padding-left: 3.5%;
+}
+
+
+.md-sidenav-right
+{
+  height: 200px;
+  width: 120px;
+  background-color: lightblue;
+  align-self: center;
+}
+
+.pad {
+  height: 100%;
+  padding-top: 100px;
+  background-position: center;
+  backface-visibility: visible;
+  background-size: cover;
+}
+
+.md-card-size
+{
+ height: 710px;
+ width: 380px;
+}
+
+.md-player-size
+{
+  height: 790px;
+  width: 380px;
+
+}
+
+/* .md-user-avatar {
+  height: 50px;
+  width: 50px;
+
+} */
+
+.card-border{
+  height: 50px;
+  width: 50px;
+  border-radius: 20%;
+}
+
+.logo
+{
+  height: auto;
+  width: 100px;
+    /* border: #EEEEEE dashed 1px; */
+}
+
+.md-title {
+  margin: auto;
+  color: tan;
+}
+
+.img {
+
+  align-self: center;
+}
+
+.photo {
+  align-self: center;
+  width: 100%;
+}
+
+.md-sidenav-left {
+  margin-top: 64px;
+  position: fixed;
+  transition: 0.7s;
+}
+
+@media(max-width:959px) and (orientation: portrait) {
+  .md-sidenav-left {
+    margin-top: 56px;
+    position: fixed;
+    transition: 0.7s;
+  }
+}
+
+.carddemoBasicUsage .card-media {
+  background-color: #999999;
+}
+
+@media(max-width:959px) and (orientation: landscape) {
+  .md-sidenav-left {
+    margin-top: 48px;
+    position: fixed;
+    transition: 0.7s;
+  }
+}
+
+@media(max-width:500px) and (orientation: portrait) {
+  .img {
+    width: 280px;
+  }
+}
+
+@media(max-width:500px) and (orientation: portrait) {
+  .img404 {
+    background-image: url('images/small404.jpg');
+  }
+}
+
+.color {
+  color: rebeccapurple;
+}
+
+/* .mgn-left
+{
+ margin-left:1px;
+} */
+@media(max-width:450px) and (orientation: portrait) {
+  .text {
+    font-size: 10px;
+    font-weight: bolder;
+
+  }
+  .btn
+  {
+    width: 30px;
+    font-size: 5px;
+  }
+}
+
+@media(max-width:496px) and (orientation: portrait) {
+  .md-sidenav-left {
+    width: auto;
+    transition: 0.7s;
+  }
+}

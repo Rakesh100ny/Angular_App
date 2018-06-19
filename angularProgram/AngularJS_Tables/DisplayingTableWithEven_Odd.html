@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Displaying Table With Even & Odd</title>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <style>
+    table, th, td  {
+      border: 1px solid grey;
+      border-collapse: collapse;
+      padding: 5px;
+      margin:5vw 0 0 22vw;
+    }
+    </style>
+  </head>
+  <body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+      <table>
+        <tr>
+           <th>SN0.</th>
+           <th>Company_Name  &nbsp&nbsp</th>
+           <th>Company_Share &nbsp&nbsp</th>
+           <th>Share_Ammount &nbsp&nbsp</th>
+           <th>Number_Of_Share </th>
+         </tr>
+          <tr ng-repeat="x in myData">
+           <td ng-if="$odd"  style="background-color:#f1f1f1" align="center">{{ $index + 0 }}</td>
+           <td ng-if="$even" style="background-color:#ffffff" align="center">{{ $index + 0 }}</td>
+           <td ng-if="$odd"  style="background-color:#f1f1f1" align="center">{{ x.Company_Name  }}</td>
+           <td ng-if="$even" style="background-color:#ffffff" align="center">{{ x.Company_Name  }}</td>
+           <td ng-if="$odd"  style="background-color:#f1f1f1" align="center">{{ x.Company_Share }}</td>
+           <td ng-if="$even" style="background-color:#ffffff" align="center">{{ x.Company_Share }}</td>
+           <td ng-if="$odd"  style="background-color:#f1f1f1" align="center">{{ x.Share_Ammount }}</td>
+           <td ng-if="$even" style="background-color:#ffffff" align="center">{{ x.Share_Ammount }}</td>
+           <td ng-if="$odd"  style="background-color:#f1f1f1" align="center">{{ x.Number_Of_Share }}</td>
+           <td ng-if="$even" style="background-color:#ffffff" align="center">{{ x.Number_Of_Share }}</td>
+        </tr>
+      </table>
+    </div>
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $http) {
+      $http.get("share.json").then(function (response) {
+          $scope.myData = response.data.Share_Info;
+      });
+    });
+    </script>
+
+    </body>
+    </html>

@@ -1,0 +1,65 @@
+<div class="playerInfo" id="playerInfo" class="carddemoBasicUsage">
+  <md-content class="content" layout="row" ng-cloak layout-xs="column" layout-wrap layout-align-gt-md="start center" layout-align-md="space-around center" layout-align-sm="space-around center">
+    <md-card class="md-card-start md-player-size animated fadeInRight" ng-repeat='item in items=(playerDetails | myFilter:arrayRoleItem:arrayBattingItem:arrayBowlingItem:arrayNationalityItem)'>
+      <md-card-header>
+        <md-card-avatar>
+          <img class="card-border" src="{{ item.team_img_url }}" alt="logo image">
+        </md-card-avatar>
+        <md-card-header-text>
+          <span class="md-title"><h3>{{ item.player_name}}</h3></span>
+        </md-card-header-text>
+      </md-card-header>
+      <span style="margin-top:10px;"flex layout="row"></span>
+      <img ng-src="{{item.player_img_url}}" class="md-card-image img" alt="logo image">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{item.player_name}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-divider></md-divider>
+      <md-card-content class="center">
+        <p><strong>player_role &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{item.player_role}}</p>
+        <p><strong>player_batting_style&nbsp;:&nbsp;</strong>{{item.player_batting_style}}</p>
+        <p>
+          <div style="height:33px;float:left;"><strong>player_bowling_style&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong></div><span>{{item.player_bowling_style}}</span></p>
+        <p>
+          <div style="height:25px;float:left;"><strong>player_Nationality&nbsp;&nbsp;&nbsp;:&nbsp;</strong></div><span>{{item.player_nationality}}</span></p>
+          <p><strong>player_dob&nbsp;:&nbsp;</strong>{{item.player_dob}}</p>
+      </md-card-content>
+      <md-divider></md-divider>
+
+    </md-card>
+  </md-content>
+<!-- </div> -->
+
+
+
+
+
+<!-- <br><br> <br>
+      <div layout="row" id="dashboard" style="-webkit-transition:.5s;"  layout-xs="column" layout-wrap>
+        <div flex-gt-md="33" flex-sm='100' ng-repeat="x in playerDetails">
+          <md-card>
+            <md-card-header>
+              <md-card-avatar>
+                <img class="md-user-avatar" ng-src="{{x.team_img_url }}">
+              </md-card-avatar>
+              <md-card-header-text>
+                <span class="md-title"><b>{{ x.player_name}}</b></span>
+              </md-card-header-text>
+            </md-card-header>
+            <img ng-src="{{x.player_img_url}}" class="md-card-image" alt="image caption">
+
+            <md-card-title>
+              <md-card-title-text>
+                <span>player_role : {{ x.player_role}}</span>
+                <span>player_batting_style:  {{ x.player_batting_style }}</span>
+                <span>player_bowling_style:  {{player_bowling_style}}</span>
+                <span>player_Nationality : {{ x.player_nationality }}</span>
+                <span>player_dob : {{ x.player_dob }}</span>
+
+              </md-card-title-text>
+            </md-card-title>
+          </  md-card>
+        </div>
+      </div> -->

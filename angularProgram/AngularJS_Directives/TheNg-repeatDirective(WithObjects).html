@@ -1,0 +1,11 @@
+    <div  ng-init="names=[
+    {name:'Ranu',country:'India'},
+    {name:'Chiku',country:'USA'},
+    {name:'Manish',country:'USA'},
+    {name:'Ronny',country:'UK'}]">
+    <p>Looping With object : </p>
+    <ul>
+      <li Ng-repeat="x in names">
+        {{x.name +', '+x.country}}
+      </li>
+    </ul>

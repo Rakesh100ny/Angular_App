@@ -1,0 +1,67 @@
+<div class="dashboard"  class="carddemoBasicUsage">
+  <md-content class="content" layout="row" ng-cloak layout-xs="column" layout-wrap layout-align-gt-md="start center" layout-align-md="space-around center" layout-align-sm="space-around center">
+    <md-card class="md-card-start md-card-size animated fadeInRight" ng-repeat='item in jsonRecord'>
+      <md-card-header>
+        <md-card-avatar>
+          <img class="card-border"  src="{{ item.team_img_url }}" alt="logo image">
+        </md-card-avatar>
+        <md-card-header-text>
+          <span class="md-title"><h3>{{ item.team_name}}</h3></span>
+        </md-card-header-text>
+      </md-card-header>
+      <span style="margin-top:10px;"flex layout="row"></span>
+      <img ng-src="{{item.team_img_url}}" class="md-card-image img" alt="logo image">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{item.team_name}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-divider></md-divider>
+      <md-card-content class="center">
+        <p><strong>Name &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong>{{item.team_name}}</p>
+        <p><strong>Captain&nbsp;:&nbsp;</strong>{{item.team_captain}}</p>
+        <p>
+          <div style="height:33px;float:left;"><strong>Home&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</strong></div><span>{{item.team_home_venue}}</span></p>
+        <p>
+          <div style="height:25px;float:left;"><strong>Owner&nbsp;&nbsp;&nbsp;:&nbsp;</strong></div><span>{{item.team_owner}}</span></p>
+      </md-card-content>
+      <md-divider></md-divider>
+      <md-card-actions layout="row" layout-align="space-between center">
+        <span flex></span>
+        <md-button class='md-raised md-accent md-hue-1' ng-click='showDetails(item.team_name)'>View!</md-button>
+      </md-card-actions>
+    </md-card>
+  </md-content>
+</div>
+
+
+<!-- <div layout="row" id="dashboard" layout-xs="column" layout-wrap>
+        <div flex-gt-md="33" flex-sm='100' ng-repeat="x in jsonRecord">
+          <md-card>
+            <md-card-header>
+              <md-card-avatar>
+                <img class="md-user-avatar" ng-src="{{x.team_img_url }}">
+              </md-card-avatar>
+              <md-card-header-text>
+                <span class="md-title"><b>{{ x.team_name}}</b></span>
+              </md-card-header-text>
+            </md-card-header>
+            <img ng-src="{{x.team_img_url}}" class="md-card-image" alt="image caption">
+
+            <md-card-title>
+              <md-card-title-text>
+                <span>Manufacturer : {{ x.team_coach}}</span>
+                <span>Storage:  {{ x.team_captain }}Gb</span>
+                <span>OS:  {{x.team_home_venue}}</span>
+                <span>Camera : {{ x.team_owner }}Mp</span>
+                id : {{ x.team_name }}
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="center center">
+              <md-button class="md-raised md-primary"  ng-click='showDialog($event,x)'>Buy Now</md-button>
+              <md-button class="md-raised md-primary"  ng-click="toggle(x.team_name)">View</md-button>
+
+            </md-card-actions>
+          </md-card>
+        </div>
+      </div> -->

@@ -1,0 +1,24 @@
+<fieldset style="width:200px;">
+    <p>{{ result }}</p>
+   <legend><h2>Login</h2></legend>
+   <form name="myForm" novalidate>
+    <p><em>Email : </em><br>
+     <input type="email" name="email" ng-model="email" required>
+     <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+      <span ng-show="myForm.email.$error.required">Email is required.</span>
+      <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+     </span>
+    </p>
+    <p><em>Password :</em><br>
+     <input type="text" name="password" ng-model="password" required>
+     <span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid">
+      <span ng-show="myForm.password.$error.required">Password is required.</span>
+     </span>
+    </p>
+
+   <input type="submit" style="float:left;" ng-click="login(email,password)" value="Login" ng-disabled="myForm.email.$dirty && myForm.email.$invalid ||
+   myForm.password.$dirty && myForm.password.$invalid">
+  </form>
+
+  <a ui-sref="register" target="_self"><button style="float:right;" type="button">Register</button></a>
+ </fieldset>

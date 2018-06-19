@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJSController</title>
+    <script src="../bower_components/angular/angular.min.js"></script>
+  </head>
+  <body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+      {{ firstName + " " + lastName }}
+    </div>
+
+    <script>
+     var app = angular.module("myApp", []);
+     app.controller("myCtrl", function($scope) {
+     $scope.firstName = "Rakesh";
+     $scope.lastName = "Soni";
+    });
+    </script>
+  </body>
+</html>
