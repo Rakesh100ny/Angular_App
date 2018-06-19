@@ -1,16 +1,40 @@
-<md-toolbar class="md-toolbar-tools" id="toolbar">
-
-   <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="sidebar">
-     <i class="material-icons">menu</i>
+<div layout="column" ng-controller="homeCtrl as demo" ng-cloak>
+  <md-toolbar  class="md-toolbar-tools" id="toolbar">
+   <md-button ng-click="toggleLeft()" ng-if="flag1" class="md-icon-button"  aria-label="sidebar">
+     <md-icon><i class="material-icons">menu</i></md-icon>
    </md-button>
     <strong class="text">Single Page Mobile App</strong>
         <span flex></span>
-
-          <md-button ng-click="toggleRight()" class="md-raised btn"  aria-label="sidebarRightSide">
-            <span><b>Theme Controller</b><i class="material-icons">color_lens</i></span>
+        <md-button ng-click="toggleRight()" class="md-raised btn"  aria-label="sidebarRightSide">
+            <span>Theme Controller<md-icon><i class="material-icons">color_lens</i></md-icon></span>
             </md-button>
+            <md-button  class="md-raised btn"  aria-label="cart">
+                <span>Cart<md-icon><i class="material-icons">shopping_cart</i></md-icon></span>
+                <span ng-if="length">{{length}}<span>
+                </md-button>
+                <md-button  ng-click="sendHome()" ng-if="flag3" class="md-raised btn" aria-label="shopping">
+                <span><md-icon><i class="material-icons">keyboard_arrow_left</i></md-icon>CONTINUE SHOPPING</span>
+               </md-button>
 
      <md-button ng-click="sendLogin()" class="md-icon-button" aria-label="logout">
-     <i class="material-icons">exit_to_app</i>
+     <md-icon><i class="material-icons">exit_to_app</i></md-icon>
     </md-button>
 </md-toolbar>
+
+<!-- <md-fab-speed-dial class="lock-size fabSpeedDialdemoBasicUsage" layout-align="center end" md-direction="left" md-open="demo.isOpen"
+                   class="md-scale md-fab-top-right">
+  <md-fab-trigger>
+    <md-button aria-label="menu" class="md-fab md-warn">
+      <i class="material-icons">menu</i>
+    </md-button>
+  </md-fab-trigger>
+
+  <md-fab-actions>
+    <md-button class="md-fab md-raised md-mini" ng-click="dynamicTheme = 'dark-grey'">G</md-button>
+    <md-button class="md-fab md-raised md-mini" ng-click="dynamicTheme = 'dark-orange'">O</md-button>
+    <md-button class="md-fab md-raised md-mini" ng-click="dynamicTheme = 'dark-purple'">P</md-button>
+    <md-button class="md-fab md-raised md-mini" ng-click="dynamicTheme = 'dark-blue'">B</md-button>
+
+  </md-fab-actions>
+</md-fab-speed-dial> -->
+</div>

@@ -1,14 +1,16 @@
-<div layout="row"  class="pad" style="background-image:url('images/photo_bg.jpg');"  layout-align='center center' layout-xs="column" ng-cloak="">
+<div layout="row"  class="bgd-img" style="background-image:url('images/photo_bg.jpg');"  layout-align='center center' layout-xs="column" ng-cloak="">
 <md-card flex-gt-md='45' flex-md='60' flex-sm='45'>
   <md-toolbar>
        <h2 class="md-toolbar-tools login-toolbar">
          <span>Login</span>
+         <span flex="5"></span>
+         <span style="color:yellow;"><p>{{result}}</p></span>
        </h2>
     </md-toolbar>
   <form name="myForm">
    <md-input-container class="md-block">
      <md-icon ><i class="material-icons" >email</i></md-icon>
-    <input ng-model="email" name="email" type="email" placeholder="Email (required)" required>
+    <input ng-model="email" name="email" type="email" ng-model="email" value="" placeholder="Email (required)" required>
     <div ng-messages="myForm.email.$error">
       <div ng-message="required">Email is required.</div>
         <div ng-message="email">Invalid email address.</div>
@@ -16,7 +18,7 @@
   </md-input-container>
   <md-input-container  class="md-block">
     <md-icon><i class="material-icons">lock</i></md-icon>
-    <input ng-model="password" type="password" name="password" placeholder="Password" required   minlength="5" md-maxlength="15">
+    <input ng-model="password" type="password" ng-model="password" name="password" value="" placeholder="Password" required   minlength="5" md-maxlength="15">
     <div ng-messages="myForm.password.$error">
       <div ng-message="required">Password is required...!</div>
       <div ng-message="md-maxlength">Password is too Long...!</div>
@@ -24,7 +26,8 @@
     </div>
   </md-input-container>
   <div layout="row" layout-align='center center' layout-xs="column" ng-cloak="">
-      <md-button ng-click="sendHome();" ng-disabled="myForm.$invalid" class="md-primary md-raised button" >Login</md-button>
+      <md-button ng-click="login(email,password);" ng-disabled="myForm.$invalid" class="md-primary md-raised button" >Login</md-button>
+      <a ui-sref="register" target="_self"><md-button  class="md-primary md-raised button" >Register</md-button></a>
   </div>
 
 </form>

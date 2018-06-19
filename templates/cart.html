@@ -1,0 +1,16 @@
+<br><br><br>
+
+<div flex-gt-sm="100" flex>
+    <md-content md-theme="{{ dynamicTheme }}" md-theme-watch>
+      <md-list flex>
+        <md-subheader class="md-no-sticky"> MY CART 3 line item (with hover)</md-subheader>
+        <md-list-item class="md-3-line" ng-repeat="item in cart" ng-click="null">
+          <img ng-src="{{item.image.small}}" class="md-avatar" alt="" />
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ item.name }}</h3>
+            <h4>{{ item.specs.manufacturer }}</h4>
+            <p>{{ item.name }}</p>
+          </div>
+        </md-list-item>
+          </md-content>
+  </div>

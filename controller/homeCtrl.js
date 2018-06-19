@@ -1,8 +1,11 @@
-app.controller('homeCtrl', function($scope, $mdSidenav, $state, readJson, $filter) {
+app.controller('homeCtrl', function($scope, $mdSidenav,$timeout,$state, readJson, $filter) {
+
   var manufacturerItem = [];
   var storageItem = [];
   var osItem = [];
   var cameraItem = [];
+
+    $scope.firstRate = 0;
 
   $scope.toggleLeft = buildToggler('left');
   $scope.toggleRight = buildToggler('right');
@@ -16,6 +19,7 @@ app.controller('homeCtrl', function($scope, $mdSidenav, $state, readJson, $filte
         var isOpen = $mdSidenav(componentId).isOpen();
         if (isOpen) {
           document.getElementById('dashboard').style.marginLeft = '320px';
+
         } else {
           document.getElementById('dashboard').style.marginLeft = '0px';
         }
@@ -39,22 +43,44 @@ app.controller('homeCtrl', function($scope, $mdSidenav, $state, readJson, $filte
     $state.go('login');
   }
 
-  var arr = [];
+  $scope.sendHome = function() {
+    $scope.home="home";
+    $state.go('home.dashboard');
+  }
+
+  // $scope.loading=true;
+  // var arr = [];
+  // $timeout(function(){
+  //   $scope.getData = readJson.getJson();
+  //   $scope.getData.then(function(response) {
+  //     $scope.jsonRecord = response;
+  //     $scope.loading=false;
+  //   })
+  // },1);
+
   $scope.getData = readJson.getJson();
   $scope.getData.then(function(response) {
     $scope.jsonRecord = response;
-    angular.forEach($scope.jsonRecord, function(value, key) {
-      arr.push(value.specs.os)
-      //console.log(arr);
-    });
+    // angular.forEach($scope.jsonRecord, function(value, key) {
+    //   arr.push(value.specs.os)
+    //   //console.log(arr);
+    // });
     // console.log("$scope.jsonRecord",$scope.jsonRecord);
   })
+   var cartItem=[];
+  $scope.openCart=function(data){
+    $scope.cart="cart";
+    cartItem.push(data);
+    $scope.length=cartItem.length;
+    console.log("length",$scope.length);
+    $scope.cart=cartItem;
+    $state.go('home.cart');
+  };
 
   $scope.Manufacturer = "manufacturer";
   $scope.Storage = "storage";
   $scope.Os = "os";
   $scope.Camera = "camera";
-
   $state.go('home.dashboard');
 
 
@@ -131,6 +157,10 @@ app.controller('homeCtrl', function($scope, $mdSidenav, $state, readJson, $filte
   $scope.arrayOs = osItem;
   $scope.arrayCamera = cameraItem;
 
+  console.log("manufacturerItem",$scope.arrayManufacturer);
+  console.log("storageItem",$scope.arrayStorage);
+  console.log("osItem",$scope.arrayOs);
+  console.log("cameraItem",$scope.arrayCamera);
 });
 
 
@@ -142,13 +172,14 @@ app.filter('myFilter', function() {
     if (arrayManufacturer.length > 0 || arrayStorage.length > 0 || arrayOs.length > 0 || arrayCamera.length > 0) {
       if (arrayManufacturer.length > 0) {
         iterateArray(items, arrayManufacturer, displayData);
-        if (displayData.length > 0) {
-          temp = displayData;
-          console.log("tempManufacturer", temp);
-          displayData = [];
-        } else {
-          temp = items;
-        }
+
+      }
+      if (displayData.length > 0) {
+        temp = displayData;
+        console.log("tempManufacturer", temp);
+        displayData = [];
+      } else {
+        temp = items;
       }
       if (arrayStorage.length > 0) {
         iterateArray(temp, arrayStorage, displayData);
@@ -192,6 +223,25 @@ iterateArray = function(items, array, displayData) {
     });
   });
 };
+
+app.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+   .primaryPalette('pink', {
+     'default': '400', // by default use shade 400 from the pink palette for primary intentions
+     'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
+     'hue-2': '600', // use shade 600 for the <code>md-hue-2</code> class
+     'hue-3': 'A100' // use shade A100 for the <code>md-hue-3</code> class
+   })
+   // If you specify less than all of the keys, it will inherit from the
+   // default shades
+   .accentPalette('purple', {
+     'default': '200' // use shade 200 for default, and keep all other shades the same
+   });
+    $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
+    $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
+    $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
+    $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark()
+});
 
 
 // app.filter('myFilter', function() {

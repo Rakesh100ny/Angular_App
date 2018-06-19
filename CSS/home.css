@@ -1,10 +1,19 @@
+
+
+
+
 #toolbar {
   position: fixed;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.35, 0, 0.25, 1);
+  transition-property: background-color, fill, color;
+
 }
 
 .dashboard {
   padding-top: 4%;
   transition: margin-left .8s;
+  transition-property: all;
 }
 
 
@@ -14,6 +23,7 @@
 
 .login-toolbar {
   background-color: #665851;
+
 }
 
 .md-sidenav-right
@@ -24,12 +34,12 @@
   align-self: center;
 }
 
-.pad {
+.bgd-img {
   height: 100%;
-  padding-top: 100px;
+  width: 100%;
   background-position: center;
-  backface-visibility: visible;
   background-size: cover;
+  /* background: url('images/photo_bg.jpg'); */
 }
 
 .md-user-avatar {
@@ -98,14 +108,15 @@
   color: rebeccapurple;
 }
 
-@media(max-width:496px) and (orientation: portrait) {
+@media(max-width:450px) and (orientation: portrait) {
   .text {
     font-size: 10px;
+    font-weight: bolder;
   }
   .btn
   {
-    width: 50px;
-    font-size: 8px;
+    width: 30px;
+    font-size: 5px;
   }
 }
 
@@ -116,4 +127,20 @@
   }
 }
 
+.jk-rating-stars-container  a:first-of-type{
+  display: none;
+
+}
+
+.jk-rating-stars-container .star-button .material-icons {
+    font-size:22px;
+    text-shadow: rgb(0, 0, 0) 0.06em 0.04em;
+}
+
+.jk-rating-stars-container .star-button.star-on .material-icons {
+  /* color: #003399; */
+  color: rgb(238, 154, 0);
+}
+ .jk-rating-stars-container .star-button.star-off .material-icons {
+  color: #99ccff;
 }
